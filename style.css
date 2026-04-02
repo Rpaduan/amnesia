@@ -58,8 +58,8 @@ section {
 section:hover {
     transform:  scale(1.1) translateY(-20px) translateX(-20px);
     box-shadow: 15px 15px 20px rgba(152, 152, 240, 0.3);
-    border: 5px solid #84E380;
-    box-sizing: content-box;
+    outline: 5px solid #84E380;
+    transition: 0.5s;
 }
 
 .produtos { 
