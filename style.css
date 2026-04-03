@@ -164,5 +164,27 @@ footer a:hover {
   }
 }
 
+@media screen and (max-width: 1400px) {
+    body {
+        background: linear-gradient(90deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+        background-size: 110% 110%;
+        animation: gradientMove 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    body {
+        background: linear-gradient(90deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+        background-size: 110% 110%;
+        animation: gradientMove 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+
+}
+
 
 
