@@ -58,6 +58,7 @@ section:hover {
     box-shadow: 15px 15px 20px #84E380;
     outline: 5px solid #84E380;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .produtos { 
@@ -67,7 +68,8 @@ section:hover {
 }
 
 footer {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 footer > p {
