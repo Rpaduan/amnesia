@@ -6,35 +6,52 @@
     box-sizing: border-box;
 }
 
+:root {
+    --cor-primaria: #05a8fa;
+    --cor-secundaria: #84E380;
+    --cor-fundo: #050014;
+    --cor-fundo-2 : #1c006f;
+    --cor-texto: #ffffff;
+    --cor-sombra-1: rgba(152, 152, 240, 0.3);
+    --cor-sombra-2: #1c006f63;
+    --font-titulo: 'Saira Stencil', cursive;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #050014 70%, #1c006f) no-repeat;
-    background-size: 100% 100%;
+    background: linear-gradient(45deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+    background-size: 110% 110%;
     animation: gradientMove 15s ease infinite;
-    color: white;
+    color: var(--cor-texto);
     min-height: 100vh;
-    min-width: 100vw;
+    overflow-x: hidden; /* Previne scroll horizontal causado pelo background-size maior que 100% */
 }
 
 header {
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 300px;
     justify-content: space-around;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 50px;
 }
 
 .imagem {
-    height: 250px; 
+    height: 300px; 
+}
+
+.texto {
+    font-size: 50px;
+    font-family: var(--font-titulo);
 }
 
 .titulo {
-    display: block;
+    font-size: 30px;
 }
 
 main {
-    width: 1750px;
+    max-width: 1700px;
+    width: 100%;
     margin: auto;
     display: flex;   
     flex-wrap: wrap;
@@ -42,50 +59,104 @@ main {
 }
 
 section {
-    background-color: #05a8fa;
+    background-color: var(--cor-primaria);
     width: 500px;
-    height: 500px;
+    height: 550px;
     margin-top: 35px;
     border-radius: 20px;
     margin-bottom: 30px;
     text-align: center;
     transition: 0.5s;
-    box-shadow: 10px 10px 15px rgba(152, 152, 240, 0.3);
+    box-shadow: 10px 10px 15px var(--cor-sombra-1);
 }
 
 section:hover {
     transform:  scale(1.05) translateY(-15px) translateX(-15px);
-    box-shadow: 15px 15px 20px #84E380;
-    outline: 5px solid #84E380;
+    box-shadow: 15px 15px 20px var(--cor-secundaria);
+    outline: 5px solid var(--cor-secundaria);
     transition: 0.5s;
     cursor: pointer;
 }
 
-.produtos { 
+.img-produto {
     width: 500px;
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: auto;
+}
+
+.produtos { 
+    width: 100%;
+    height: 100%;
     align-items: center;
     border-radius: 20px;
+    object-fit: cover;
+}
+
+h2 {
+    margin-top: 15px;
+    font-size: 30px;
+    font-family: var(--font-titulo);
+}
+
+section > p {
+    font-size: 18px;
+}
+
+button {
+    width: 250px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-top: 10px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--cor-sombra-2);
 }
 
 footer {
     display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--cor-fundo-2);
+    overflow-y: hidden;
 }
 
 footer > p {
     text-align: center;
     margin-top: 50px;
     font-size: 20px;
+    justify-content: center;
 }
 
 footer > a {
     text-align: center;
     margin-top: 20px;
     font-size: 18px;
-    color: white;
+    color: var(--cor-texto);
     text-decoration: none;
+    justify-content: center;
 }
 
+/* 
+ * @keyframes gradientMove
+ * 
+ * Funcionalidades:
+ * - Cria uma animação contínua que move o gradiente de fundo da página
+ * - Começa no lado esquerdo (0% 50%) e se move para o direito (100% 50%)
+ * - Retorna à posição inicial para criar efeito de loop infinito
+ * - Gera um efeito visual dinâmico e suave no fundo, melhorando a estética
+ * - Funciona em conjunto com background-size: 110% 110% e overflow-x: hidden para movimento sem scroll horizontal
+ * - Duração: 15 segundos (conforme definido em animation: gradientMove 15s ease infinite)
+ * - Tempo: ease (aceleração suave no início e final da animação)
+ */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -97,4 +168,6 @@ footer > a {
     background-position: 0% 50%;
   }
 }
+
+
 
