@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #05a8fa;
+    --cor-secundaria: #84E380;
+    --cor-fundo: #050014;
+    --cor-fundo-2 : #1c006f;
+    --cor-texto: #ffffff;
+    --cor-sombra-1: rgba(152, 152, 240, 0.3);
+    --cor-sombra-2: #1c006f63;
+    --font-titulo: 'Saira Stencil', cursive;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+    background-size: 125% 110%;
+    animation: gradientMove 15s ease infinite;
+    color: var(--cor-texto);
+    min-height: 100vh;
+    overflow-x: hidden; /* Previne scroll horizontal causado pelo background-size maior que 100% */
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 24rem;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+.imagem {
+    height: 24rem; 
+}
+
+.texto {
+    font-size: 4rem;
+    font-family: var(--font-titulo);
+}
+
+.titulo {
+    font-size: 2.4rem;
+    margin-bottom: 3.2rem;
+}
+
+main {
+    max-width: 136rem;
+    width: 100%;
+    margin: auto;
+    display: flex;   
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+section {
+    background-color: var(--cor-primaria);
+    width: 40rem;
+    height: 44rem;
+    margin-top: 0.5rem;
+    border-radius: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    transition: 0.5s;
+    box-shadow: 1rem 1rem 1.5rem var(--cor-sombra-1);
+}
+
+section:hover {
+    transform:  scale(1.05) translateY(-1.5rem) translateX(-1.5rem);
+    box-shadow: 1.5rem 1.5rem 2rem var(--cor-secundaria);
+    outline: 0.5rem solid var(--cor-secundaria);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.img-produto {
+    width: 40rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: auto;
+}
+
+.produtos { 
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+h2 {
+    margin-top: 1.2rem;
+    font-size: 2.4rem;
+    font-family: var(--font-titulo);
+}
+
+section > p {
+    font-size: 1.8rem;
+}
+
+button {
+    width: 20rem;
+    height: 4rem;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-top: 0.8rem;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 1rem var(--cor-sombra-2);
+}
+
+footer {
+    width: 100%; 
+    font-size: 2rem;
+    background-color: var(--cor-fundo-2);
+    text-align: center;
+    padding: 1.5rem;
+}
+
+footer a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+footer a:hover {
+    color: var(--cor-secundaria);
+}
+
+
+
+/* 
+ * @keyframes gradientMove
+ * 
+ * Funcionalidades:
+ * - Cria uma animação contínua que move o gradiente de fundo da página
+ * - Começa no lado esquerdo (0% 50%) e se move para o direito (100% 50%)
+ * - Retorna à posição inicial para criar efeito de loop infinito
+ * - Gera um efeito visual dinâmico e suave no fundo, melhorando a estética
+ * - Funciona em conjunto com background-size: 110% 110% e overflow-x: hidden para movimento sem scroll horizontal
+ * - Duração: 15 segundos (conforme definido em animation: gradientMove 15s ease infinite)
+ * - Tempo: ease (aceleração suave no início e final da animação)
+ */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media screen and (max-width: 50rem) {
+    body {
+        background: linear-gradient(180deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+        background-size: 110% 110%;
+        animation: gradientMove 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .texto {
+        font-size: 3rem;
+        font-family: var(--font-titulo);
+}
+
+    .titulo {
+        font-size: 2rem;
+        margin-bottom: 3.2rem;
+    }
+}
+
+
+
+
+

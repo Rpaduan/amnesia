@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
+/* RESET PADRÃO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* VARIÁVEIS */
 :root {
     --cor-primaria: #05a8fa;
     --cor-secundaria: #84E380;
@@ -17,31 +19,41 @@
     --font-titulo: 'Saira Stencil', cursive;
 }
 
+/* 🔥 1. BASE DE REM (mantido - excelente prática) */
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
     font-family: Arial, sans-serif;
+
+    /* 🔥 Gradiente animado mantido */
     background: linear-gradient(45deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
     background-size: 125% 110%;
     animation: gradientMove 15s ease infinite;
+
     color: var(--cor-texto);
     min-height: 100vh;
-    overflow-x: hidden; /* Previne scroll horizontal causado pelo background-size maior que 100% */
+
+    /* 🔥 evita scroll horizontal */
+    overflow-x: hidden;
 }
 
+/* HEADER */
 header {
     display: flex;
     width: 100%;
     height: 24rem;
+
     justify-content: space-around;
     align-items: center;
+
     padding-top: 1.5rem;
 }
 
+/* 🔥 OBS: altura fixa pode quebrar no mobile */
 .imagem {
-    height: 24rem; 
+    height: 24rem;
 }
 
 .texto {
@@ -54,52 +66,76 @@ header {
     margin-bottom: 3.2rem;
 }
 
+/* 🚀 2. TROCA DE FLEX PARA GRID (melhor responsividade) */
 main {
     max-width: 136rem;
     width: 100%;
     margin: auto;
-    display: flex;   
-    flex-wrap: wrap;
-    justify-content: space-around;
+
+    display: grid;
+
+    /* 🔥 AUTO AJUSTE RESPONSIVO */
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+
+    gap: 2rem;
+
+    padding: 0 1rem; /* evita colar nas bordas */
 }
 
+/* CARD */
 section {
     background-color: var(--cor-primaria);
-    width: 40rem;
+
+    /* 🔥 3. RESPONSIVO (ANTES ERA width fixa) */
+    width: 100%;
+    max-width: 40rem;
+
     height: 44rem;
-    margin-top: 0.5rem;
+
     border-radius: 2rem;
-    margin-bottom: 3rem;
     text-align: center;
+
     transition: 0.5s;
+
     box-shadow: 1rem 1rem 1.5rem var(--cor-sombra-1);
+
+    /* 🔥 centraliza no grid */
+    margin: auto;
 }
 
-section:hover {
-    transform:  scale(1.05) translateY(-1.5rem) translateX(-1.5rem);
-    box-shadow: 1.5rem 1.5rem 2rem var(--cor-secundaria);
-    outline: 0.5rem solid var(--cor-secundaria);
-    transition: 0.5s;
-    cursor: pointer;
+/* 🔥 4. HOVER só em dispositivos que suportam */
+@media (hover: hover) {
+    section:hover {
+        transform: scale(1.05) translateY(-1.5rem);
+        box-shadow: 1.5rem 1.5rem 2rem var(--cor-secundaria);
+        outline: 0.5rem solid var(--cor-secundaria);
+        cursor: pointer;
+    }
 }
 
+/* IMAGEM DO CARD */
 .img-produto {
-    width: 40rem;
+    /* 🔥 5. ANTES ERA FIXO (40rem) — quebrava no mobile */
+    width: 100%;
+
     height: 30rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: auto;
 }
 
-.produtos { 
+.produtos {
     width: 100%;
     height: 100%;
-    align-items: center;
+
     border-radius: 2rem;
+
+    /* 🔥 ESSENCIAL PRA RESPONSIVIDADE */
     object-fit: cover;
 }
 
+/* TEXTOS */
 h2 {
     margin-top: 1.2rem;
     font-size: 2.4rem;
@@ -110,23 +146,32 @@ section > p {
     font-size: 1.8rem;
 }
 
+/* BOTÃO */
 button {
     width: 20rem;
     height: 4rem;
+
     cursor: pointer;
     font-size: 2rem;
+
     margin-top: 0.8rem;
+
     background-color: var(--cor-secundaria);
     color: var(--cor-texto);
+
     border: none;
     border-radius: 1rem;
+
     box-shadow: 0.5rem 0.5rem 1rem var(--cor-sombra-2);
 }
 
+/* FOOTER */
 footer {
-    width: 100%; 
+    width: 100%;
     font-size: 2rem;
+    margin-top: 2rem;
     background-color: var(--cor-fundo-2);
+
     text-align: center;
     padding: 1.5rem;
 }
@@ -141,20 +186,48 @@ footer a:hover {
     color: var(--cor-secundaria);
 }
 
+@media (max-width: 1300px) {
+    section > p {
+        font-size: 1.7rem;
+    }
+}
 
+/* 📱 6. RESPONSIVIDADE MOBILE */
+@media (max-width: 768px) {
 
-/* 
- * @keyframes gradientMove
- * 
- * Funcionalidades:
- * - Cria uma animação contínua que move o gradiente de fundo da página
- * - Começa no lado esquerdo (0% 50%) e se move para o direito (100% 50%)
- * - Retorna à posição inicial para criar efeito de loop infinito
- * - Gera um efeito visual dinâmico e suave no fundo, melhorando a estética
- * - Funciona em conjunto com background-size: 110% 110% e overflow-x: hidden para movimento sem scroll horizontal
- * - Duração: 15 segundos (conforme definido em animation: gradientMove 15s ease infinite)
- * - Tempo: ease (aceleração suave no início e final da animação)
- */
+    body {
+        background: linear-gradient(180deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
+    }
+
+    header {
+        flex-direction: column; /* 🔥 empilha */
+        height: auto; /* 🔥 remove altura fixa */
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .imagem {
+        height: 16rem; /* 🔥 reduz tamanho */
+    }
+
+    .texto {
+        font-size: 3rem; /* 🔥 reduz fonte */
+    }
+
+    section {
+        height: auto; /* 🔥 evita cortes no mobile */
+    }
+
+    .img-produto {
+        height: 22rem; /* 🔥 ajusta imagem */
+    }
+
+    Button {
+       margin-bottom: 10px;
+    }
+}
+
+/* ANIMAÇÃO */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -166,28 +239,3 @@ footer a:hover {
     background-position: 0% 50%;
   }
 }
-
-@media screen and (max-width: 50rem) {
-    body {
-        background: linear-gradient(180deg, var(--cor-fundo) 60%, var(--cor-fundo-2)) no-repeat;
-        background-size: 110% 110%;
-        animation: gradientMove 15s ease infinite;
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
-
-    .texto {
-        font-size: 3rem;
-        font-family: var(--font-titulo);
-}
-
-    .titulo {
-        font-size: 2rem;
-        margin-bottom: 3.2rem;
-    }
-}
-
-
-
-
-
