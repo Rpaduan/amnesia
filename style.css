@@ -180,6 +180,7 @@ footer a {
     color: var(--cor-texto);
     text-decoration: none;
     margin: 0 1rem;
+    white-space: nowrap;
 }
 
 footer a:hover {
